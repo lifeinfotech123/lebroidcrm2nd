@@ -1,0 +1,299 @@
+﻿Analyzing lebroid_crm...                                        
+
+   info - Don't invoke 'print' in production code - lib\feaure\auth\data\repositories\auth_repository.dart:17:5 - avoid_print
+   info - Don't invoke 'print' in production code - lib\feaure\auth\data\repositories\auth_repository.dart:27:5 - avoid_print
+   info - The imported package 'http' isn't a dependency of the importing package - lib\feaure\auth\data\services\auth_service.dart:2:8 - depend_on_referenced_packages
+  error - Target of URI doesn't exist: 'package:http/http.dart' - lib\feaure\auth\data\services\auth_service.dart:2:8 - uri_does_not_exist
+   info - Don't invoke 'print' in production code - lib\feaure\auth\data\services\auth_service.dart:15:5 - avoid_print
+   info - Don't invoke 'print' in production code - lib\feaure\auth\data\services\auth_service.dart:16:5 - avoid_print
+   info - The imported package 'shared_preferences' isn't a dependency of the importing package - lib\feaure\auth\logics\auth_bloc.dart:6:8 - depend_on_referenced_packages
+  error - Target of URI doesn't exist: 'package:shared_preferences/shared_preferences.dart' - lib\feaure\auth\logics\auth_bloc.dart:6:8 - uri_does_not_exist
+   info - The imported package 'shared_preferences' isn't a dependency of the importing package - lib\feaure\auth\logics\auth_bloc.dart:8:8 - depend_on_referenced_packages
+  error - Target of URI doesn't exist: 'package:shared_preferences/shared_preferences.dart' - lib\feaure\auth\logics\auth_bloc.dart:8:8 - uri_does_not_exist
+   info - The imported package 'shared_preferences' isn't a dependency of the importing package - lib\feaure\auth\logics\auth_bloc.dart:14:8 - depend_on_referenced_packages
+  error - Target of URI doesn't exist: 'package:shared_preferences/shared_preferences.dart' - lib\feaure\auth\logics\auth_bloc.dart:14:8 - uri_does_not_exist
+  error - Undefined name 'SharedPreferences' - lib\feaure\auth\logics\auth_bloc.dart:34:27 - undefined_identifier
+  error - Undefined name 'SharedPreferences' - lib\feaure\auth\logics\auth_bloc.dart:49:27 - undefined_identifier
+   info - The imported package 'lifeinfotech_ams' isn't a dependency of the importing package - lib\feaure\auth\presentation\screens\login_screen.dart:2:8 - depend_on_referenced_packages
+  error - Target of URI doesn't exist: 'package:lifeinfotech_ams/feaure/bottom_navigation_bar/presentation/widgets/custom_nav_widget.dart' - lib\feaure\auth\presentation\screens\login_screen.dart:2:8 - uri_does_not_exist
+   info - The imported package 'lifeinfotech_ams' isn't a dependency of the importing package - lib\feaure\auth\presentation\screens\login_screen.dart:3:8 - depend_on_referenced_packages
+  error - Target of URI doesn't exist: 'package:lifeinfotech_ams/resources/ImageAssets/ImageAssets.dart' - lib\feaure\auth\presentation\screens\login_screen.dart:3:8 - uri_does_not_exist
+   info - The imported package 'lifeinfotech_ams' isn't a dependency of the importing package - lib\feaure\auth\presentation\screens\login_screen.dart:4:8 - depend_on_referenced_packages
+  error - Target of URI doesn't exist: 'package:lifeinfotech_ams/widgets/custom_text_field.dart' - lib\feaure\auth\presentation\screens\login_screen.dart:4:8 - uri_does_not_exist
+warning - The value of the local variable 'selectedRole' isn't used - lib\feaure\auth\presentation\screens\login_screen.dart:40:13 - unused_local_variable
+  error - The method 'BottomNavScreen' isn't defined for the type '_LoginScreenState' - lib\feaure\auth\presentation\screens\login_screen.dart:41:24 - undefined_method
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\feaure\auth\presentation\screens\login_screen.dart:63:43 - deprecated_member_use
+  error - Undefined name 'ImageAssets' - lib\feaure\auth\presentation\screens\login_screen.dart:70:19 - undefined_identifier
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\feaure\auth\presentation\screens\login_screen.dart:104:39 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\feaure\auth\presentation\screens\login_screen.dart:107:41 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\feaure\auth\presentation\screens\login_screen.dart:112:43 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\feaure\auth\presentation\screens\login_screen.dart:130:56 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\feaure\auth\presentation\screens\login_screen.dart:164:43 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\feaure\auth\presentation\screens\login_screen.dart:170:43 - deprecated_member_use
+  error - The method 'NewCustomTextField' isn't defined for the type '_LoginScreenState' - lib\feaure\auth\presentation\screens\login_screen.dart:182:23 - undefined_method
+  error - The method 'NewCustomTextField' isn't defined for the type '_LoginScreenState' - lib\feaure\auth\presentation\screens\login_screen.dart:198:23 - undefined_method
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\feaure\auth\presentation\screens\login_screen.dart:243:66 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\feaure\auth\presentation\screens\login_screen.dart:275:39 - deprecated_member_use
+   info - The imported package 'lifeinfotech_ams' isn't a dependency of the importing package - lib\feaure\auth\presentation\screens\splash_screen.dart:4:8 - depend_on_referenced_packages
+  error - Target of URI doesn't exist: 'package:lifeinfotech_ams/feaure/bottom_navigation_bar/presentation/widgets/custom_nav_widget.dart' - lib\feaure\auth\presentation\screens\splash_screen.dart:4:8 - uri_does_not_exist
+   info - The imported package 'lifeinfotech_ams' isn't a dependency of the importing package - lib\feaure\auth\presentation\screens\splash_screen.dart:6:8 - depend_on_referenced_packages
+  error - Target of URI doesn't exist: 'package:lifeinfotech_ams/resources/ImageAssets/ImageAssets.dart' - lib\feaure\auth\presentation\screens\splash_screen.dart:6:8 - uri_does_not_exist
+  error - The method 'BottomNavScreen' isn't defined for the type '_SplashScreenState' - lib\feaure\auth\presentation\screens\splash_screen.dart:25:44 - undefined_method
+  error - Undefined name 'ImageAssets' - lib\feaure\auth\presentation\screens\splash_screen.dart:43:15 - undefined_identifier
+   info - The imported package 'lifeinfotech_ams' isn't a dependency of the importing package - lib\feaure\auth\presentation\screens\welcome_screen.dart:4:8 - depend_on_referenced_packages
+  error - Target of URI doesn't exist: 'package:lifeinfotech_ams/feaure/auth/presentation/screens/login_screen.dart' - lib\feaure\auth\presentation\screens\welcome_screen.dart:4:8 - uri_does_not_exist
+   info - The imported package 'carousel_slider' isn't a dependency of the importing package - lib\feaure\auth\presentation\screens\welcome_screen.dart:5:8 - depend_on_referenced_packages
+  error - Target of URI doesn't exist: 'package:carousel_slider/carousel_controller.dart' - lib\feaure\auth\presentation\screens\welcome_screen.dart:5:8 - uri_does_not_exist
+   info - The imported package 'carousel_slider' isn't a dependency of the importing package - lib\feaure\auth\presentation\screens\welcome_screen.dart:6:8 - depend_on_referenced_packages
+  error - Target of URI doesn't exist: 'package:carousel_slider/carousel_slider.dart' - lib\feaure\auth\presentation\screens\welcome_screen.dart:6:8 - uri_does_not_exist
+  error - Undefined name 'CarouselSlider' - lib\feaure\auth\presentation\screens\welcome_screen.dart:22:11 - undefined_identifier
+  error - The method 'CarouselOptions' isn't defined for the type 'WelcomeScreen' - lib\feaure\auth\presentation\screens\welcome_screen.dart:24:22 - undefined_method
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\feaure\auth\presentation\screens\welcome_screen.dart:50:32 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\feaure\auth\presentation\screens\welcome_screen.dart:51:32 - deprecated_member_use
+  error - The method 'LoginScreen' isn't defined for the type 'WelcomeScreen' - lib\feaure\auth\presentation\screens\welcome_screen.dart:78:30 - undefined_method
+  error - The method 'LoginScreen' isn't defined for the type 'WelcomeScreen' - lib\feaure\auth\presentation\screens\welcome_screen.dart:100:30 - undefined_method
+warning - Duplicate import - lib\feaure\bottom_navigation_bar\logics\navigation\navigation_bloc.dart:5:8 - duplicate_import
+warning - Duplicate import - lib\feaure\bottom_navigation_bar\logics\navigation\navigation_bloc.dart:6:8 - duplicate_import
+warning - Duplicate import - lib\feaure\bottom_navigation_bar\logics\navigation\navigation_bloc.dart:7:8 - duplicate_import
+warning - Duplicate import - lib\feaure\bottom_navigation_bar\logics\navigation\navigation_event.dart:3:8 - duplicate_import
+warning - Duplicate import - lib\feaure\bottom_navigation_bar\logics\navigation\navigation_state.dart:3:8 - duplicate_import
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\feaure\bottom_navigation_bar\presentation\screens\profile_screen.dart:221:35 - deprecated_member_use
+   info - The imported package 'lifeinfotech_ams' isn't a dependency of the importing package - lib\feaure\bottom_navigation_bar\presentation\widgets\custom_nav_widget.dart:2:8 - depend_on_referenced_packages
+  error - Target of URI doesn't exist: 'package:lifeinfotech_ams/feaure/bottom_navigation_bar/presentation/screens/profile_screen.dart' - lib\feaure\bottom_navigation_bar\presentation\widgets\custom_nav_widget.dart:2:8 - uri_does_not_exist
+   info - The imported package 'lifeinfotech_ams' isn't a dependency of the importing package - lib\feaure\bottom_navigation_bar\presentation\widgets\custom_nav_widget.dart:4:8 - depend_on_referenced_packages
+  error - Target of URI doesn't exist: 'package:lifeinfotech_ams/feaure/bottom_navigation_bar/presentation/screens/report_screen.dart' - lib\feaure\bottom_navigation_bar\presentation\widgets\custom_nav_widget.dart:4:8 - uri_does_not_exist
+   info - The imported package 'lifeinfotech_ams' isn't a dependency of the importing package - lib\feaure\bottom_navigation_bar\presentation\widgets\custom_nav_widget.dart:5:8 - depend_on_referenced_packages
+  error - Target of URI doesn't exist: 'package:lifeinfotech_ams/feaure/bottom_navigation_bar/presentation/screens/setting_screen.dart' - lib\feaure\bottom_navigation_bar\presentation\widgets\custom_nav_widget.dart:5:8 - uri_does_not_exist
+   info - The imported package 'lifeinfotech_ams' isn't a dependency of the importing package - lib\feaure\bottom_navigation_bar\presentation\widgets\custom_nav_widget.dart:6:8 - depend_on_referenced_packages
+  error - Target of URI doesn't exist: 'package:lifeinfotech_ams/feaure/dashboard_screen/presentation/screens/dash_board_screen.dart' - lib\feaure\bottom_navigation_bar\presentation\widgets\custom_nav_widget.dart:6:8 - uri_does_not_exist
+   info - The imported package 'lifeinfotech_ams' isn't a dependency of the importing package - lib\feaure\bottom_navigation_bar\presentation\widgets\custom_nav_widget.dart:7:8 - depend_on_referenced_packages
+  error - Target of URI doesn't exist: 'package:lifeinfotech_ams/feaure/home/presentation/screens/home_screen.dart' - lib\feaure\bottom_navigation_bar\presentation\widgets\custom_nav_widget.dart:7:8 - uri_does_not_exist
+   info - Parameter 'key' could be a super parameter - lib\feaure\bottom_navigation_bar\presentation\widgets\custom_nav_widget.dart:12:9 - use_super_parameters
+  error - The name 'HomeScreen' isn't a class - lib\feaure\bottom_navigation_bar\presentation\widgets\custom_nav_widget.dart:22:11 - creation_with_non_type
+  error - The name 'ReportScreen' isn't a class - lib\feaure\bottom_navigation_bar\presentation\widgets\custom_nav_widget.dart:23:11 - creation_with_non_type
+  error - The name 'DashBoardScreen' isn't a class - lib\feaure\bottom_navigation_bar\presentation\widgets\custom_nav_widget.dart:24:11 - creation_with_non_type
+  error - The name 'ProfileScreen' isn't a class - lib\feaure\bottom_navigation_bar\presentation\widgets\custom_nav_widget.dart:25:11 - creation_with_non_type
+  error - The name 'SettingScreen' isn't a class - lib\feaure\bottom_navigation_bar\presentation\widgets\custom_nav_widget.dart:26:11 - creation_with_non_type
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\feaure\bottom_navigation_bar\presentation\widgets\custom_nav_widget.dart:41:37 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\feaure\bottom_navigation_bar\presentation\widgets\custom_nav_widget.dart:92:46 - deprecated_member_use
+   info - The imported package 'lifeinfotech_ams' isn't a dependency of the importing package - lib\feaure\dashboard_screen\presentation\screens\dash_board_screen.dart:2:8 - depend_on_referenced_packages
+  error - Target of URI doesn't exist: 'package:lifeinfotech_ams/feaure/dashboard_screen/presentation/widget/bar_graph_widget.dart' - lib\feaure\dashboard_screen\presentation\screens\dash_board_screen.dart:2:8 - uri_does_not_exist
+   info - The imported package 'lifeinfotech_ams' isn't a dependency of the importing package - lib\feaure\dashboard_screen\presentation\screens\dash_board_screen.dart:3:8 - depend_on_referenced_packages
+  error - Target of URI doesn't exist: 'package:lifeinfotech_ams/feaure/dashboard_screen/presentation/widget/graph_widget.dart' - lib\feaure\dashboard_screen\presentation\screens\dash_board_screen.dart:3:8 - uri_does_not_exist
+   info - The imported package 'lifeinfotech_ams' isn't a dependency of the importing package - lib\feaure\dashboard_screen\presentation\screens\dash_board_screen.dart:4:8 - depend_on_referenced_packages
+  error - Target of URI doesn't exist: 'package:lifeinfotech_ams/feaure/dashboard_screen/presentation/widget/order_list_widget.dart' - lib\feaure\dashboard_screen\presentation\screens\dash_board_screen.dart:4:8 - uri_does_not_exist
+   info - The imported package 'lifeinfotech_ams' isn't a dependency of the importing package - lib\feaure\dashboard_screen\presentation\screens\dash_board_screen.dart:5:8 - depend_on_referenced_packages
+  error - Target of URI doesn't exist: 'package:lifeinfotech_ams/feaure/dashboard_screen/presentation/widget/pie_graph_widget.dart' - lib\feaure\dashboard_screen\presentation\screens\dash_board_screen.dart:5:8 - uri_does_not_exist
+   info - The imported package 'lifeinfotech_ams' isn't a dependency of the importing package - lib\feaure\dashboard_screen\presentation\screens\dash_board_screen.dart:6:8 - depend_on_referenced_packages
+  error - Target of URI doesn't exist: 'package:lifeinfotech_ams/feaure/dashboard_screen/presentation/widget/show_data_container.dart' - lib\feaure\dashboard_screen\presentation\screens\dash_board_screen.dart:6:8 - uri_does_not_exist
+  error - The name 'ShowDataContainer' isn't a class - lib\feaure\dashboard_screen\presentation\screens\dash_board_screen.dart:42:29 - creation_with_non_type
+  error - The name 'ShowDataContainer' isn't a class - lib\feaure\dashboard_screen\presentation\screens\dash_board_screen.dart:52:29 - creation_with_non_type
+  error - The name 'ShowDataContainer' isn't a class - lib\feaure\dashboard_screen\presentation\screens\dash_board_screen.dart:62:29 - creation_with_non_type
+  error - The name 'ShowDataContainer' isn't a class - lib\feaure\dashboard_screen\presentation\screens\dash_board_screen.dart:72:29 - creation_with_non_type
+  error - The name 'ShowDataContainer' isn't a class - lib\feaure\dashboard_screen\presentation\screens\dash_board_screen.dart:92:29 - creation_with_non_type
+  error - The name 'ShowDataContainer' isn't a class - lib\feaure\dashboard_screen\presentation\screens\dash_board_screen.dart:102:29 - creation_with_non_type
+  error - The name 'ShowDataContainer' isn't a class - lib\feaure\dashboard_screen\presentation\screens\dash_board_screen.dart:112:29 - creation_with_non_type
+  error - The name 'ShowDataContainer' isn't a class - lib\feaure\dashboard_screen\presentation\screens\dash_board_screen.dart:122:29 - creation_with_non_type
+  error - The name 'ShowDataContainer' isn't a class - lib\feaure\dashboard_screen\presentation\screens\dash_board_screen.dart:142:29 - creation_with_non_type
+  error - The name 'ShowDataContainer' isn't a class - lib\feaure\dashboard_screen\presentation\screens\dash_board_screen.dart:152:29 - creation_with_non_type
+  error - The name 'ShowDataContainer' isn't a class - lib\feaure\dashboard_screen\presentation\screens\dash_board_screen.dart:162:29 - creation_with_non_type
+  error - The name 'ShowDataContainer' isn't a class - lib\feaure\dashboard_screen\presentation\screens\dash_board_screen.dart:172:29 - creation_with_non_type
+  error - The method 'BarGraphWidget' isn't defined for the type 'DashBoardScreen' - lib\feaure\dashboard_screen\presentation\screens\dash_board_screen.dart:185:15 - undefined_method
+  error - The method 'PieGraphWidget' isn't defined for the type 'DashBoardScreen' - lib\feaure\dashboard_screen\presentation\screens\dash_board_screen.dart:187:15 - undefined_method
+  error - The method 'GraphWidget' isn't defined for the type 'DashBoardScreen' - lib\feaure\dashboard_screen\presentation\screens\dash_board_screen.dart:189:15 - undefined_method
+  error - The method 'OrderListWidget' isn't defined for the type 'DashBoardScreen' - lib\feaure\dashboard_screen\presentation\screens\dash_board_screen.dart:205:15 - undefined_method
+  error - The method 'OrderListWidget' isn't defined for the type 'DashBoardScreen' - lib\feaure\dashboard_screen\presentation\screens\dash_board_screen.dart:217:15 - undefined_method
+  error - The method 'OrderListWidget' isn't defined for the type 'DashBoardScreen' - lib\feaure\dashboard_screen\presentation\screens\dash_board_screen.dart:229:15 - undefined_method
+   info - The imported package 'fl_chart' isn't a dependency of the importing package - lib\feaure\dashboard_screen\presentation\widget\bar_graph_widget.dart:3:8 - depend_on_referenced_packages
+  error - Target of URI doesn't exist: 'package:fl_chart/fl_chart.dart' - lib\feaure\dashboard_screen\presentation\widget\bar_graph_widget.dart:3:8 - uri_does_not_exist
+  error - The method 'BarChart' isn't defined for the type 'BarGraphWidget' - lib\feaure\dashboard_screen\presentation\widget\bar_graph_widget.dart:33:20 - undefined_method
+  error - The method 'BarChartData' isn't defined for the type 'BarGraphWidget' - lib\feaure\dashboard_screen\presentation\widget\bar_graph_widget.dart:34:15 - undefined_method
+  error - The method 'BarTouchData' isn't defined for the type 'BarGraphWidget' - lib\feaure\dashboard_screen\presentation\widget\bar_graph_widget.dart:36:31 - undefined_method
+  error - The method 'FlGridData' isn't defined for the type 'BarGraphWidget' - lib\feaure\dashboard_screen\presentation\widget\bar_graph_widget.dart:38:27 - undefined_method
+  error - The method 'FlBorderData' isn't defined for the type 'BarGraphWidget' - lib\feaure\dashboard_screen\presentation\widget\bar_graph_widget.dart:39:29 - undefined_method
+  error - The method 'ExtraLinesData' isn't defined for the type 'BarGraphWidget' - lib\feaure\dashboard_screen\presentation\widget\bar_graph_widget.dart:41:33 - undefined_method
+  error - The name 'BarChartGroupData' isn't a type, so it can't be used as a type argument - lib\feaure\dashboard_screen\presentation\widget\bar_graph_widget.dart:67:8 - non_type_as_type_argument
+warning - The value of the local variable 'visitors' isn't used - lib\feaure\dashboard_screen\presentation\widget\bar_graph_widget.dart:68:11 - unused_local_variable
+  error - The method 'BarChartGroupData' isn't defined for the type 'BarGraphWidget' - lib\feaure\dashboard_screen\presentation\widget\bar_graph_widget.dart:73:14 - undefined_method
+  error - The method 'BarChartRodData' isn't defined for the type 'BarGraphWidget' - lib\feaure\dashboard_screen\presentation\widget\bar_graph_widget.dart:76:11 - undefined_method
+  error - The method 'BarChartRodData' isn't defined for the type 'BarGraphWidget' - lib\feaure\dashboard_screen\presentation\widget\bar_graph_widget.dart:82:11 - undefined_method
+  error - Undefined class 'FlTitlesData' - lib\feaure\dashboard_screen\presentation\widget\bar_graph_widget.dart:93:3 - undefined_class
+  error - The method 'FlTitlesData' isn't defined for the type 'BarGraphWidget' - lib\feaure\dashboard_screen\presentation\widget\bar_graph_widget.dart:94:12 - undefined_method
+  error - The method 'AxisTitles' isn't defined for the type 'BarGraphWidget' - lib\feaure\dashboard_screen\presentation\widget\bar_graph_widget.dart:95:19 - undefined_method
+  error - The method 'SideTitles' isn't defined for the type 'BarGraphWidget' - lib\feaure\dashboard_screen\presentation\widget\bar_graph_widget.dart:96:21 - undefined_method
+  error - The method 'AxisTitles' isn't defined for the type 'BarGraphWidget' - lib\feaure\dashboard_screen\presentation\widget\bar_graph_widget.dart:107:21 - undefined_method
+  error - The method 'SideTitles' isn't defined for the type 'BarGraphWidget' - lib\feaure\dashboard_screen\presentation\widget\bar_graph_widget.dart:108:21 - undefined_method
+  error - The method 'AxisTitles' isn't defined for the type 'BarGraphWidget' - lib\feaure\dashboard_screen\presentation\widget\bar_graph_widget.dart:125:20 - undefined_method
+  error - The method 'SideTitles' isn't defined for the type 'BarGraphWidget' - lib\feaure\dashboard_screen\presentation\widget\bar_graph_widget.dart:125:43 - undefined_method
+  error - The method 'AxisTitles' isn't defined for the type 'BarGraphWidget' - lib\feaure\dashboard_screen\presentation\widget\bar_graph_widget.dart:126:18 - undefined_method
+  error - The method 'SideTitles' isn't defined for the type 'BarGraphWidget' - lib\feaure\dashboard_screen\presentation\widget\bar_graph_widget.dart:126:41 - undefined_method
+   info - The imported package 'fl_chart' isn't a dependency of the importing package - lib\feaure\dashboard_screen\presentation\widget\graph_widget.dart:3:8 - depend_on_referenced_packages
+  error - Target of URI doesn't exist: 'package:fl_chart/fl_chart.dart' - lib\feaure\dashboard_screen\presentation\widget\graph_widget.dart:3:8 - uri_does_not_exist
+  error - The method 'BarChart' isn't defined for the type 'GraphWidget' - lib\feaure\dashboard_screen\presentation\widget\graph_widget.dart:103:20 - undefined_method
+  error - The method 'BarChartData' isn't defined for the type 'GraphWidget' - lib\feaure\dashboard_screen\presentation\widget\graph_widget.dart:104:15 - undefined_method
+  error - The method 'FlGridData' isn't defined for the type 'GraphWidget' - lib\feaure\dashboard_screen\presentation\widget\graph_widget.dart:106:27 - undefined_method
+  error - The method 'FlLine' isn't defined for the type 'GraphWidget' - lib\feaure\dashboard_screen\presentation\widget\graph_widget.dart:110:28 - undefined_method
+  error - The method 'FlBorderData' isn't defined for the type 'GraphWidget' - lib\feaure\dashboard_screen\presentation\widget\graph_widget.dart:116:29 - undefined_method
+  error - The method 'BarTouchData' isn't defined for the type 'GraphWidget' - lib\feaure\dashboard_screen\presentation\widget\graph_widget.dart:119:31 - undefined_method
+  error - The name 'BarChartGroupData' isn't a type, so it can't be used as a type argument - lib\feaure\dashboard_screen\presentation\widget\graph_widget.dart:141:8 - non_type_as_type_argument
+  error - The method 'BarChartGroupData' isn't defined for the type 'GraphWidget' - lib\feaure\dashboard_screen\presentation\widget\graph_widget.dart:146:14 - undefined_method
+  error - The method 'BarChartRodData' isn't defined for the type 'GraphWidget' - lib\feaure\dashboard_screen\presentation\widget\graph_widget.dart:150:11 - undefined_method
+  error - The method 'BarChartRodData' isn't defined for the type 'GraphWidget' - lib\feaure\dashboard_screen\presentation\widget\graph_widget.dart:156:11 - undefined_method
+  error - Undefined class 'FlTitlesData' - lib\feaure\dashboard_screen\presentation\widget\graph_widget.dart:167:3 - undefined_class
+  error - The method 'FlTitlesData' isn't defined for the type 'GraphWidget' - lib\feaure\dashboard_screen\presentation\widget\graph_widget.dart:168:12 - undefined_method
+  error - The method 'AxisTitles' isn't defined for the type 'GraphWidget' - lib\feaure\dashboard_screen\presentation\widget\graph_widget.dart:169:19 - undefined_method
+  error - The method 'SideTitles' isn't defined for the type 'GraphWidget' - lib\feaure\dashboard_screen\presentation\widget\graph_widget.dart:170:21 - undefined_method
+  error - The method 'AxisTitles' isn't defined for the type 'GraphWidget' - lib\feaure\dashboard_screen\presentation\widget\graph_widget.dart:172:20 - undefined_method
+  error - The method 'SideTitles' isn't defined for the type 'GraphWidget' - lib\feaure\dashboard_screen\presentation\widget\graph_widget.dart:173:21 - undefined_method
+  error - The method 'AxisTitles' isn't defined for the type 'GraphWidget' - lib\feaure\dashboard_screen\presentation\widget\graph_widget.dart:175:18 - undefined_method
+  error - The method 'SideTitles' isn't defined for the type 'GraphWidget' - lib\feaure\dashboard_screen\presentation\widget\graph_widget.dart:176:21 - undefined_method
+  error - The method 'AxisTitles' isn't defined for the type 'GraphWidget' - lib\feaure\dashboard_screen\presentation\widget\graph_widget.dart:178:21 - undefined_method
+  error - The method 'SideTitles' isn't defined for the type 'GraphWidget' - lib\feaure\dashboard_screen\presentation\widget\graph_widget.dart:179:21 - undefined_method
+warning - Duplicate import - lib\feaure\dashboard_screen\presentation\widget\order_list_widget.dart:3:8 - duplicate_import
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\feaure\dashboard_screen\presentation\widget\order_list_widget.dart:50:33 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\feaure\dashboard_screen\presentation\widget\order_list_widget.dart:125:39 - deprecated_member_use
+   info - The imported package 'fl_chart' isn't a dependency of the importing package - lib\feaure\dashboard_screen\presentation\widget\pie_graph_widget.dart:2:8 - depend_on_referenced_packages
+  error - Target of URI doesn't exist: 'package:fl_chart/fl_chart.dart' - lib\feaure\dashboard_screen\presentation\widget\pie_graph_widget.dart:2:8 - uri_does_not_exist
+warning - Duplicate import - lib\feaure\dashboard_screen\presentation\widget\pie_graph_widget.dart:3:8 - duplicate_import
+  error - The method 'PieChart' isn't defined for the type 'PieGraphWidget' - lib\feaure\dashboard_screen\presentation\widget\pie_graph_widget.dart:85:20 - undefined_method
+  error - The method 'PieChartData' isn't defined for the type 'PieGraphWidget' - lib\feaure\dashboard_screen\presentation\widget\pie_graph_widget.dart:86:15 - undefined_method
+  error - The name 'PieChartSectionData' isn't a type, so it can't be used as a type argument - lib\feaure\dashboard_screen\presentation\widget\pie_graph_widget.dart:113:8 - non_type_as_type_argument
+  error - The method 'PieChartSectionData' isn't defined for the type 'PieGraphWidget' - lib\feaure\dashboard_screen\presentation\widget\pie_graph_widget.dart:115:7 - undefined_method
+  error - The method 'PieChartSectionData' isn't defined for the type 'PieGraphWidget' - lib\feaure\dashboard_screen\presentation\widget\pie_graph_widget.dart:121:7 - undefined_method
+  error - The method 'PieChartSectionData' isn't defined for the type 'PieGraphWidget' - lib\feaure\dashboard_screen\presentation\widget\pie_graph_widget.dart:127:7 - undefined_method
+  error - The method 'PieChartSectionData' isn't defined for the type 'PieGraphWidget' - lib\feaure\dashboard_screen\presentation\widget\pie_graph_widget.dart:133:7 - undefined_method
+warning - Duplicate import - lib\feaure\dashboard_screen\presentation\widget\show_data_container.dart:3:8 - duplicate_import
+warning - Duplicate import - lib\feaure\home\presentation\screens\attendace_detail_screen.dart:3:8 - duplicate_import
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\feaure\home\presentation\screens\attendace_detail_screen.dart:249:36 - deprecated_member_use
+warning - Duplicate import - lib\feaure\home\presentation\screens\checkin_checkout_screen.dart:3:8 - duplicate_import
+   info - The imported package 'lifeinfotech_ams' isn't a dependency of the importing package - lib\feaure\home\presentation\screens\home_screen.dart:2:8 - depend_on_referenced_packages
+  error - Target of URI doesn't exist: 'package:lifeinfotech_ams/feaure/home/presentation/screens/project_detail_screen.dart' - lib\feaure\home\presentation\screens\home_screen.dart:2:8 - uri_does_not_exist
+   info - The imported package 'lifeinfotech_ams' isn't a dependency of the importing package - lib\feaure\home\presentation\screens\home_screen.dart:3:8 - depend_on_referenced_packages
+  error - Target of URI doesn't exist: 'package:lifeinfotech_ams/feaure/home/presentation/screens/project_screen.dart' - lib\feaure\home\presentation\screens\home_screen.dart:3:8 - uri_does_not_exist
+   info - The imported package 'lifeinfotech_ams' isn't a dependency of the importing package - lib\feaure\home\presentation\screens\home_screen.dart:4:8 - depend_on_referenced_packages
+  error - Target of URI doesn't exist: 'package:lifeinfotech_ams/feaure/home/presentation/widget/home_widgets/attendance_card.dart' - lib\feaure\home\presentation\screens\home_screen.dart:4:8 - uri_does_not_exist
+   info - The imported package 'lifeinfotech_ams' isn't a dependency of the importing package - lib\feaure\home\presentation\screens\home_screen.dart:5:8 - depend_on_referenced_packages
+  error - Target of URI doesn't exist: 'package:lifeinfotech_ams/feaure/home/presentation/widget/home_widgets/home_screen_header.dart' - lib\feaure\home\presentation\screens\home_screen.dart:5:8 - uri_does_not_exist
+   info - The imported package 'lifeinfotech_ams' isn't a dependency of the importing package - lib\feaure\home\presentation\screens\home_screen.dart:6:8 - depend_on_referenced_packages
+  error - Target of URI doesn't exist: 'package:lifeinfotech_ams/feaure/home/presentation/widget/home_widgets/leave_card_widget.dart' - lib\feaure\home\presentation\screens\home_screen.dart:6:8 - uri_does_not_exist
+   info - The imported package 'lifeinfotech_ams' isn't a dependency of the importing package - lib\feaure\home\presentation\screens\home_screen.dart:8:8 - depend_on_referenced_packages
+  error - Target of URI doesn't exist: 'package:lifeinfotech_ams/feaure/home/presentation/widget/home_widgets/my_current_project_widget.dart' - lib\feaure\home\presentation\screens\home_screen.dart:8:8 - uri_does_not_exist
+   info - The imported package 'lifeinfotech_ams' isn't a dependency of the importing package - lib\feaure\home\presentation\screens\home_screen.dart:9:8 - depend_on_referenced_packages
+  error - Target of URI doesn't exist: 'package:lifeinfotech_ams/feaure/home/presentation/widget/home_widgets/my_punch_in_widget.dart' - lib\feaure\home\presentation\screens\home_screen.dart:9:8 - uri_does_not_exist
+   info - The imported package 'lifeinfotech_ams' isn't a dependency of the importing package - lib\feaure\home\presentation\screens\home_screen.dart:10:8 - depend_on_referenced_packages
+  error - Target of URI doesn't exist: 'package:lifeinfotech_ams/feaure/home/presentation/widget/home_widgets/stats_card_widget.dart' - lib\feaure\home\presentation\screens\home_screen.dart:10:8 - uri_does_not_exist
+   info - The imported package 'lifeinfotech_ams' isn't a dependency of the importing package - lib\feaure\home\presentation\screens\home_screen.dart:11:8 - depend_on_referenced_packages
+  error - Target of URI doesn't exist: 'package:lifeinfotech_ams/feaure/telecaller/presentation/screens/add_new_leads_screen.dart' - lib\feaure\home\presentation\screens\home_screen.dart:11:8 - uri_does_not_exist
+   info - The imported package 'lifeinfotech_ams' isn't a dependency of the importing package - lib\feaure\home\presentation\screens\home_screen.dart:12:8 - depend_on_referenced_packages
+  error - Target of URI doesn't exist: 'package:lifeinfotech_ams/feaure/telecaller/presentation/screens/telecaller_leads_screen.dart' - lib\feaure\home\presentation\screens\home_screen.dart:12:8 - uri_does_not_exist
+   info - The imported package 'lifeinfotech_ams' isn't a dependency of the importing package - lib\feaure\home\presentation\screens\home_screen.dart:13:8 - depend_on_referenced_packages
+  error - Target of URI doesn't exist: 'package:lifeinfotech_ams/resources/ImageAssets/ImageAssets.dart' - lib\feaure\home\presentation\screens\home_screen.dart:13:8 - uri_does_not_exist
+  error - The name 'HomeScreenHeader' isn't a class - lib\feaure\home\presentation\screens\home_screen.dart:43:27 - creation_with_non_type
+  error - The name 'StatCard' isn't a class - lib\feaure\home\presentation\screens\home_screen.dart:48:27 - creation_with_non_type
+  error - Undefined name 'ImageAssets' - lib\feaure\home\presentation\screens\home_screen.dart:49:38 - undefined_identifier
+  error - Undefined name 'ImageAssets' - lib\feaure\home\presentation\screens\home_screen.dart:52:46 - undefined_identifier
+  error - Undefined name 'ImageAssets' - lib\feaure\home\presentation\screens\home_screen.dart:55:51 - undefined_identifier
+  error - The name 'MyPunchInWidget' isn't a class - lib\feaure\home\presentation\screens\home_screen.dart:62:33 - creation_with_non_type
+  error - The method 'MyCurrentProjectWidget' isn't defined for the type 'HomeScreen' - lib\feaure\home\presentation\screens\home_screen.dart:64:27 - undefined_method
+  error - The name 'ProjectDetailScreen' isn't a class - lib\feaure\home\presentation\screens\home_screen.dart:69:57 - creation_with_non_type
+  error - The name 'AttendanceCard' isn't a class - lib\feaure\home\presentation\screens\home_screen.dart:170:15 - creation_with_non_type
+  error - The name 'LeaveCardWidgetCard' isn't a class - lib\feaure\home\presentation\screens\home_screen.dart:172:15 - creation_with_non_type
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\feaure\home\presentation\screens\home_screen.dart:298:22 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\feaure\home\presentation\screens\home_screen.dart:300:41 - deprecated_member_use
+   info - The imported package 'intl' isn't a dependency of the importing package - lib\feaure\home\presentation\screens\project_detail_screen.dart:3:8 - depend_on_referenced_packages
+  error - Target of URI doesn't exist: 'package:intl/intl.dart' - lib\feaure\home\presentation\screens\project_detail_screen.dart:3:8 - uri_does_not_exist
+  error - The method 'DateFormat' isn't defined for the type 'ProjectDetailScreen' - lib\feaure\home\presentation\screens\project_detail_screen.dart:19:27 - undefined_method
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\feaure\home\presentation\screens\project_detail_screen.dart:128:33 - deprecated_member_use
+   info - The imported package 'lifeinfotech_ams' isn't a dependency of the importing package - lib\feaure\home\presentation\screens\project_screen.dart:2:8 - depend_on_referenced_packages
+  error - Target of URI doesn't exist: 'package:lifeinfotech_ams/feaure/dashboard_screen/presentation/widget/show_data_container.dart' - lib\feaure\home\presentation\screens\project_screen.dart:2:8 - uri_does_not_exist
+   info - The imported package 'lifeinfotech_ams' isn't a dependency of the importing package - lib\feaure\home\presentation\screens\project_screen.dart:3:8 - depend_on_referenced_packages
+  error - Target of URI doesn't exist: 'package:lifeinfotech_ams/feaure/home/presentation/widget/project_screen_widget/project_screen_widget.dart' - lib\feaure\home\presentation\screens\project_screen.dart:3:8 - uri_does_not_exist
+  error - The method 'TotalProjectWidget' isn't defined for the type 'ProjectScreen' - lib\feaure\home\presentation\screens\project_screen.dart:21:17 - undefined_method
+  error - The method 'TotalProjectWidget' isn't defined for the type 'ProjectScreen' - lib\feaure\home\presentation\screens\project_screen.dart:27:17 - undefined_method
+  error - The method 'TotalProjectWidget' isn't defined for the type 'ProjectScreen' - lib\feaure\home\presentation\screens\project_screen.dart:33:17 - undefined_method
+  error - Target of URI doesn't exist: '../../../../auth/presentation/screens/admin_login_screen.dart' - lib\feaure\home\presentation\widget\home_drawer_eidget\home_drawer_widget.dart:3:8 - uri_does_not_exist
+  error - Target of URI doesn't exist: '../../../../auth/presentation/screens/user_login_screen.dart' - lib\feaure\home\presentation\widget\home_drawer_eidget\home_drawer_widget.dart:4:8 - uri_does_not_exist
+  error - Target of URI doesn't exist: '../../screens/complain_list_screen.dart' - lib\feaure\home\presentation\widget\home_drawer_eidget\home_drawer_widget.dart:5:8 - uri_does_not_exist
+  error - Target of URI doesn't exist: '../../screens/donation_list_screen.dart' - lib\feaure\home\presentation\widget\home_drawer_eidget\home_drawer_widget.dart:6:8 - uri_does_not_exist
+  error - Target of URI doesn't exist: '../../screens/legal_document_list_screen.dart' - lib\feaure\home\presentation\widget\home_drawer_eidget\home_drawer_widget.dart:7:8 - uri_does_not_exist
+  error - The method 'DonationListScreen' isn't defined for the type 'HomeDrawerWidget' - lib\feaure\home\presentation\widget\home_drawer_eidget\home_drawer_widget.dart:49:51 - undefined_method
+  error - The method 'LegalDocumentScreen' isn't defined for the type 'HomeDrawerWidget' - lib\feaure\home\presentation\widget\home_drawer_eidget\home_drawer_widget.dart:61:51 - undefined_method
+  error - The method 'ComplainsScreen' isn't defined for the type 'HomeDrawerWidget' - lib\feaure\home\presentation\widget\home_drawer_eidget\home_drawer_widget.dart:73:51 - undefined_method
+  error - The method 'AdminLoginScreen' isn't defined for the type 'HomeDrawerWidget' - lib\feaure\home\presentation\widget\home_drawer_eidget\home_drawer_widget.dart:87:51 - undefined_method
+  error - The method 'UserLoginScreen' isn't defined for the type 'HomeDrawerWidget' - lib\feaure\home\presentation\widget\home_drawer_eidget\home_drawer_widget.dart:99:51 - undefined_method
+warning - Duplicate import - lib\feaure\home\presentation\widget\home_widgets\attendance_card.dart:2:8 - duplicate_import
+   info - The imported package 'lifeinfotech_ams' isn't a dependency of the importing package - lib\feaure\home\presentation\widget\home_widgets\attendance_card.dart:3:8 - depend_on_referenced_packages
+  error - Target of URI doesn't exist: 'package:lifeinfotech_ams/feaure/home/presentation/screens/attendace_detail_screen.dart' - lib\feaure\home\presentation\widget\home_widgets\attendance_card.dart:3:8 - uri_does_not_exist
+   info - The imported package 'lifeinfotech_ams' isn't a dependency of the importing package - lib\feaure\home\presentation\widget\home_widgets\attendance_card.dart:5:8 - depend_on_referenced_packages
+  error - Target of URI doesn't exist: 'package:lifeinfotech_ams/feaure/home/presentation/screens/checkin_checkout_screen.dart' - lib\feaure\home\presentation\widget\home_widgets\attendance_card.dart:5:8 - uri_does_not_exist
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\feaure\home\presentation\widget\home_widgets\attendance_card.dart:22:35 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\feaure\home\presentation\widget\home_widgets\attendance_card.dart:60:34 - deprecated_member_use
+  error - The method 'CheckinCheckoutScreen' isn't defined for the type 'AttendanceCard' - lib\feaure\home\presentation\widget\home_widgets\attendance_card.dart:72:28 - undefined_method
+  error - The method 'AttendanceDetailScreen' isn't defined for the type 'AttendanceCard' - lib\feaure\home\presentation\widget\home_widgets\attendance_card.dart:83:28 - undefined_method
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\feaure\home\presentation\widget\home_widgets\attendance_card.dart:122:23 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\feaure\home\presentation\widget\home_widgets\attendance_card.dart:123:23 - deprecated_member_use
+warning - Duplicate import - lib\feaure\home\presentation\widget\home_widgets\home_screen_header.dart:3:8 - duplicate_import
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\feaure\home\presentation\widget\home_widgets\home_screen_header.dart:25:33 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\feaure\home\presentation\widget\home_widgets\leave_card_widget.dart:19:35 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\feaure\home\presentation\widget\home_widgets\leave_card_widget.dart:101:26 - deprecated_member_use
+   info - The imported package 'intl' isn't a dependency of the importing package - lib\feaure\home\presentation\widget\home_widgets\my_current_project_widget.dart:3:8 - depend_on_referenced_packages
+  error - Target of URI doesn't exist: 'package:intl/intl.dart' - lib\feaure\home\presentation\widget\home_widgets\my_current_project_widget.dart:3:8 - uri_does_not_exist
+   info - The import of 'package:flutter/cupertino.dart' is unnecessary because all of the used elements are also provided by the import of 'package:flutter/material.dart' - lib\feaure\home\presentation\widget\home_widgets\my_current_project_widget.dart:4:8 - unnecessary_import
+warning - Duplicate import - lib\feaure\home\presentation\widget\home_widgets\my_current_project_widget.dart:6:8 - duplicate_import
+   info - The imported package 'intl' isn't a dependency of the importing package - lib\feaure\home\presentation\widget\home_widgets\my_current_project_widget.dart:7:8 - depend_on_referenced_packages
+  error - Target of URI doesn't exist: 'package:intl/intl.dart' - lib\feaure\home\presentation\widget\home_widgets\my_current_project_widget.dart:7:8 - uri_does_not_exist
+  error - The method 'DateFormat' isn't defined for the type 'MyCurrentProjectWidget' - lib\feaure\home\presentation\widget\home_widgets\my_current_project_widget.dart:19:5 - undefined_method
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\feaure\home\presentation\widget\home_widgets\my_current_project_widget.dart:30:34 - deprecated_member_use
+warning - Duplicate import - lib\feaure\home\presentation\widget\home_widgets\my_punch_in_widget.dart:4:8 - duplicate_import
+   info - The imported package 'intl' isn't a dependency of the importing package - lib\feaure\home\presentation\widget\home_widgets\my_punch_in_widget.dart:5:8 - depend_on_referenced_packages
+  error - Target of URI doesn't exist: 'package:intl/intl.dart' - lib\feaure\home\presentation\widget\home_widgets\my_punch_in_widget.dart:5:8 - uri_does_not_exist
+  error - The method 'DateFormat' isn't defined for the type 'MyPunchInWidget' - lib\feaure\home\presentation\widget\home_widgets\my_punch_in_widget.dart:19:38 - undefined_method
+  error - The method 'DateFormat' isn't defined for the type 'MyPunchInWidget' - lib\feaure\home\presentation\widget\home_widgets\my_punch_in_widget.dart:21:9 - undefined_method
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\feaure\home\presentation\widget\home_widgets\my_punch_in_widget.dart:30:36 - deprecated_member_use
+   info - The import of 'package:flutter/cupertino.dart' is unnecessary because all of the used elements are also provided by the import of 'package:flutter/material.dart' - lib\feaure\home\presentation\widget\home_widgets\stats_card_widget.dart:2:8 - unnecessary_import
+warning - Duplicate import - lib\feaure\home\presentation\widget\home_widgets\stats_card_widget.dart:5:8 - duplicate_import
+warning - Duplicate import - lib\feaure\home\presentation\widget\home_widgets\stats_card_widget.dart:7:8 - duplicate_import
+   info - Parameter 'key' could be a super parameter - lib\feaure\home\presentation\widget\home_widgets\stats_card_widget.dart:22:9 - use_super_parameters
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\feaure\home\presentation\widget\home_widgets\stats_card_widget.dart:47:34 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\feaure\home\presentation\widget\home_widgets\stats_card_widget.dart:117:33 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\feaure\home\presentation\widget\project_screen_widget\project_screen_widget.dart:39:28 - deprecated_member_use
+warning - Duplicate import - lib\feaure\telecaller\presentation\screens\add_new_leads_screen.dart:3:8 - duplicate_import
+   info - The imported package 'lifeinfotech_ams' isn't a dependency of the importing package - lib\feaure\telecaller\presentation\screens\add_new_leads_screen.dart:4:8 - depend_on_referenced_packages
+  error - Target of URI doesn't exist: 'package:lifeinfotech_ams/widgets/custom_text_field.dart' - lib\feaure\telecaller\presentation\screens\add_new_leads_screen.dart:4:8 - uri_does_not_exist
+warning - The declaration '_pickDate' isn't referenced - lib\feaure\telecaller\presentation\screens\add_new_leads_screen.dart:55:16 - unused_element
+warning - The declaration '_pickTime' isn't referenced - lib\feaure\telecaller\presentation\screens\add_new_leads_screen.dart:68:16 - unused_element
+   info - Don't use 'BuildContext's across async gaps - lib\feaure\telecaller\presentation\screens\add_new_leads_screen.dart:74:41 - use_build_context_synchronously
+   info - 'value' is deprecated and shouldn't be used. Use initialValue instead. This will set the initial value for the form field. This feature was deprecated after v3.33.0-1.0.pre - lib\feaure\telecaller\presentation\screens\add_new_leads_screen.dart:85:7 - deprecated_member_use
+warning - The declaration '_textField' isn't referenced - lib\feaure\telecaller\presentation\screens\add_new_leads_screen.dart:100:10 - unused_element
+  error - The method 'CustomTextField' isn't defined for the type '_AddNewLeadsScreenState' - lib\feaure\telecaller\presentation\screens\add_new_leads_screen.dart:163:13 - undefined_method
+  error - The method 'CustomTextField' isn't defined for the type '_AddNewLeadsScreenState' - lib\feaure\telecaller\presentation\screens\add_new_leads_screen.dart:168:13 - undefined_method
+  error - The method 'CustomTextField' isn't defined for the type '_AddNewLeadsScreenState' - lib\feaure\telecaller\presentation\screens\add_new_leads_screen.dart:173:13 - undefined_method
+  error - The method 'CustomTextField' isn't defined for the type '_AddNewLeadsScreenState' - lib\feaure\telecaller\presentation\screens\add_new_leads_screen.dart:179:13 - undefined_method
+  error - The method 'CustomTextField' isn't defined for the type '_AddNewLeadsScreenState' - lib\feaure\telecaller\presentation\screens\add_new_leads_screen.dart:185:13 - undefined_method
+  error - The method 'CustomTextField' isn't defined for the type '_AddNewLeadsScreenState' - lib\feaure\telecaller\presentation\screens\add_new_leads_screen.dart:191:13 - undefined_method
+  error - The method 'CustomTextField' isn't defined for the type '_AddNewLeadsScreenState' - lib\feaure\telecaller\presentation\screens\add_new_leads_screen.dart:197:13 - undefined_method
+  error - The method 'CustomTextField' isn't defined for the type '_AddNewLeadsScreenState' - lib\feaure\telecaller\presentation\screens\add_new_leads_screen.dart:203:13 - undefined_method
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\feaure\telecaller\presentation\screens\telecaller_leads_screen.dart:83:22 - deprecated_member_use
+  error - The method 'MultiBlocProvider' isn't defined for the type 'MyApp' - lib\main.dart:13:12 - undefined_method
+  error - The method 'BlocProvider' isn't defined for the type 'MyApp' - lib\main.dart:15:9 - undefined_method
+  error - The name 'NavigationBloc' isn't a type, so it can't be used as a type argument - lib\main.dart:15:22 - non_type_as_type_argument
+  error - The method 'NavigationBloc' isn't defined for the type 'MyApp' - lib\main.dart:16:26 - undefined_method
+  error - The method 'GetMaterialApp' isn't defined for the type 'MyApp' - lib\main.dart:19:14 - undefined_method
+  error - The method 'LoginScreen' isn't defined for the type 'MyApp' - lib\main.dart:26:16 - undefined_method
+   info - The file name 'ImageAssets.dart' isn't a lower_case_with_underscores identifier - lib\resources\ImageAssets\ImageAssets.dart:1:1 - file_names
+warning - Unused import: 'package:get/get.dart' - lib\resources\ImageAssets\ImageAssets.dart:1:8 - unused_import
+warning - Duplicate import - lib\widgets\custom_text_field.dart:3:8 - duplicate_import
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\widgets\custom_text_field.dart:94:40 - deprecated_member_use
+   info - 'withOpacity' is deprecated and shouldn't be used. Use .withValues() to avoid precision loss - lib\widgets\custom_text_field.dart:125:38 - deprecated_member_use
+
+flutter : 285 issues found. (ran in 3.2s)
+At line:1 char:1
++ flutter analyze --no-pub 2>&1 | 
+Out-File -FilePath "d:\lebroid_crm\an ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecifi 
+   ed: (285 issues found. (ran in 3.2s)  
+  :String) [], RemoteException
+    + FullyQualifiedErrorId : NativeComm 
+   andError
+ 

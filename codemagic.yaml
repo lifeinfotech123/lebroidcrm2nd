@@ -1,0 +1,266 @@
+# ============================================================================
+# Codemagic CI/CD Configuration — Task Management Flutter App
+# ============================================================================
+# App: task_management
+# Package: com.lifeinfotech.taskmanagement.task_management
+# SDK: Flutter (Dart ^3.7.2)
+# Docs: https://docs.codemagic.io/yaml/yaml-getting-started/
+# ============================================================================
+
+workflows:
+
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  # 1. ANDROID WORKFLOW — Build, Test & Deploy Android APK/AAB
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  android-workflow:
+    name: 🤖 Android Build & Deploy
+    max_build_duration: 30
+    instance_type: mac_mini_m2
+
+    environment:
+      flutter: stable
+      java: 17
+      groups:
+        - android_credentials   # Group defined in Codemagic UI
+        - notifications         # Optional: Slack/Email credentials
+      vars:
+        PACKAGE_NAME: "com.lifeinfotech.taskmanagement.task_management"
+      android_signing:
+        - android_keystore       # Keystore reference defined in Codemagic UI
+
+    cache:
+      cache_paths:
+        - $HOME/.pub-cache
+        - $HOME/.gradle/caches
+        - $FLUTTER_ROOT/.pub-cache
+
+    triggering:
+      events:
+        - push
+        - pull_request
+      branch_patterns:
+        - pattern: 'main'
+          include: true
+          source: true
+        - pattern: 'develop'
+          include: true
+          source: true
+        - pattern: 'release/*'
+          include: true
+          source: true
+      cancel_previous_builds: true
+
+    scripts:
+      # ── Step 1: Install Dependencies ──────────────────────────────────
+      - name: 📦 Get Flutter Packages
+        script: flutter pub get
+
+      # ── Step 2: Code Analysis ─────────────────────────────────────────
+      - name: 🔎 Run Code Analysis
+        script: |
+          dart format --output=none --set-exit-if-changed .
+          flutter analyze --no-fatal-infos
+
+      # ── Step 3: Run Tests ─────────────────────────────────────────────
+      - name: 🧪 Run Tests
+        script: flutter test --reporter=expanded
+        ignore_failure: false
+
+      # ── Step 4: Set Build Number ──────────────────────────────────────
+      - name: 🔢 Set Build Number
+        script: |
+          # Use Codemagic build number for versioning
+          BUILD_NUMBER=$PROJECT_BUILD_NUMBER
+          echo "Building with version 1.0.0+$BUILD_NUMBER"
+
+      # ── Step 5: Build Debug APK (for develop/feature branches) ────────
+      - name: 🏗️ Build Debug APK
+        script: |
+          if [ "$CM_BRANCH" != "main" ] && [[ "$CM_BRANCH" != release/* ]]; then
+            flutter build apk --debug --build-number=$PROJECT_BUILD_NUMBER
+          fi
+
+      # ── Step 6: Build Release APK ────────────────────────────────────
+      - name: 🏗️ Build Release APK
+        script: |
+          if [ "$CM_BRANCH" = "main" ] || [[ "$CM_BRANCH" == release/* ]]; then
+            flutter build apk --release --build-number=$PROJECT_BUILD_NUMBER
+          fi
+
+      # ── Step 7: Build App Bundle (AAB) for Play Store ────────────────
+      - name: 🏗️ Build App Bundle (AAB)
+        script: |
+          if [ "$CM_BRANCH" = "main" ] || [[ "$CM_BRANCH" == release/* ]]; then
+            flutter build appbundle --release --build-number=$PROJECT_BUILD_NUMBER
+          fi
+
+    artifacts:
+      - build/**/outputs/**/*.apk
+      - build/**/outputs/**/*.aab
+      - build/**/outputs/**/mapping.txt
+      - flutter_drive.log
+
+    publishing:
+      email:
+        recipients:
+          - your-email@lifeinfotech.com    # 📧 Change to your email
+        notify:
+          success: true
+          failure: true
+
+      # ── Google Play Store Deployment ─────────────────────────────────
+      google_play:
+        credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
+        track: internal                    # internal → alpha → beta → production
+        submit_as_draft: true
+        changes_not_sent_for_review: true
+        # Uncomment below for production release:
+        # track: production
+        # submit_as_draft: false
+
+      # ── Slack Notifications (Optional) ───────────────────────────────
+      # slack:
+      #   channel: '#mobile-builds'
+      #   notify_on_build_start: false
+      #   notify:
+      #     success: true
+      #     failure: true
+
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  # 2. iOS WORKFLOW — Build, Test & Deploy iOS IPA
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  ios-workflow:
+    name: 🍎 iOS Build & Deploy
+    max_build_duration: 45
+    instance_type: mac_mini_m2
+    integrations:
+      app_store_connect: Codemagic        # Integration name in Codemagic UI
+
+    environment:
+      flutter: stable
+      xcode: latest
+      cocoapods: default
+      ios_signing:
+        distribution_type: app_store       # app_store | ad_hoc | development
+        bundle_identifier: com.lifeinfotech.taskmanagement.taskManagement
+      groups:
+        - notifications
+      vars:
+        APP_STORE_APPLE_ID: 123456789      # 🔧 Replace with your Apple ID number
+
+    cache:
+      cache_paths:
+        - $HOME/.pub-cache
+        - $HOME/Library/Caches/CocoaPods
+        - $FLUTTER_ROOT/.pub-cache
+
+    triggering:
+      events:
+        - push
+      branch_patterns:
+        - pattern: 'main'
+          include: true
+          source: true
+        - pattern: 'release/*'
+          include: true
+          source: true
+      cancel_previous_builds: true
+
+    scripts:
+      # ── Step 1: Install Dependencies ──────────────────────────────────
+      - name: 📦 Get Flutter Packages
+        script: flutter pub get
+
+      # ── Step 2: Install CocoaPods ─────────────────────────────────────
+      - name: 📱 Install CocoaPods
+        script: |
+          cd ios
+          pod install
+
+      # ── Step 3: Run Tests ─────────────────────────────────────────────
+      - name: 🧪 Run Tests
+        script: flutter test --reporter=expanded
+        ignore_failure: false
+
+      # ── Step 4: Set Up Code Signing (Automatic) ──────────────────────
+      - name: 🔐 Set Up iOS Code Signing
+        script: |
+          keychain initialize
+          app-store-connect fetch-signing-files \
+            "com.lifeinfotech.taskmanagement.taskManagement" \
+            --type IOS_APP_STORE \
+            --create
+          keychain add-certificates
+          xcode-project use-profiles
+
+      # ── Step 5: Build iOS IPA ─────────────────────────────────────────
+      - name: 🏗️ Build iOS IPA
+        script: |
+          flutter build ipa --release \
+            --build-number=$PROJECT_BUILD_NUMBER \
+            --export-options-plist=/Users/builder/export_options.plist
+
+    artifacts:
+      - build/ios/ipa/*.ipa
+      - /tmp/xcodebuild_logs/*.log
+      - flutter_drive.log
+
+    publishing:
+      email:
+        recipients:
+          - your-email@lifeinfotech.com    # 📧 Change to your email
+        notify:
+          success: true
+          failure: true
+
+      # ── App Store Connect Deployment ─────────────────────────────────
+      app_store_connect:
+        auth: integration
+        submit_to_testflight: true
+        expire_build_submitted_for_review: true
+        # Uncomment for App Store submission:
+        # submit_to_app_store: true
+
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  # 3. PR VALIDATION WORKFLOW — Lightweight checks for Pull Requests
+  # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  pr-validation:
+    name: ✅ PR Validation
+    max_build_duration: 15
+    instance_type: mac_mini_m2
+
+    environment:
+      flutter: stable
+      java: 17
+
+    cache:
+      cache_paths:
+        - $HOME/.pub-cache
+        - $FLUTTER_ROOT/.pub-cache
+
+    triggering:
+      events:
+        - pull_request
+      branch_patterns:
+        - pattern: 'main'
+          include: true
+          source: false
+        - pattern: 'develop'
+          include: true
+          source: false
+      cancel_previous_builds: true
+
+    scripts:
+      - name: 📦 Get Flutter Packages
+        script: flutter pub get
+
+      - name: 🔎 Run Code Analysis
+        script: |
+          dart format --output=none --set-exit-if-changed .
+          flutter analyze --no-fatal-infos
+
+      - name: 🧪 Run Tests
+        script: flutter test --reporter=expanded
+
+      - name: 🏗️ Verify Build Compiles
+        script: flutter build apk --debug

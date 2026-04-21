@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "662008636239",
+    "project_id": "lebroid-crm",
+    "storage_bucket": "lebroid-crm.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:662008636239:android:85955d821042cb9ae19b3a",
+        "android_client_info": {
+          "package_name": "com.lebroid_crm.lebroid_crm"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHd6YDQ9akolII17Idnh0Wf5NeJAFcqWs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
