@@ -97,7 +97,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                     ),
                   ],
                 ),
-                child: Image.asset(ImageAssets.lebroidImg, height: 70),
+                child: Image.asset(ImageAssets.lebroidlogo, height: 70),
               ),
 
               const SizedBox(height: 30),

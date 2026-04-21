@@ -75,13 +75,13 @@ class _SplashScreenState extends State<SplashScreen>
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(16),
                   child: Image.asset(
-                  ImageAssets.lebroidImg,
+                  ImageAssets.lebroidlogo,
                     width: 300,
                     height: 300,
                     fit: BoxFit.contain,
                     errorBuilder: (context, error, stackTrace) {
                       return  Image.asset(
-                        ImageAssets.lebroidImg
+                        ImageAssets.lebroidlogo
                       );
                     },
                   ),
