@@ -12,6 +12,13 @@ class CalendarAttendanceResponse {
   }
 }
 
+String? _parseStringOrObject(dynamic value, [String fallbackKey = 'name']) {
+  if (value == null) return null;
+  if (value is String) return value;
+  if (value is Map) return value[fallbackKey]?.toString() ?? value.toString();
+  return value.toString();
+}
+
 class CalendarData {
   final List<CalendarDayModel> calendar;
 
@@ -63,26 +70,26 @@ class CalendarDayModel {
 
   factory CalendarDayModel.fromJson(Map<String, dynamic> json) {
     return CalendarDayModel(
-      date: json['date'],
-      day: json['day'],
-      dateStr: json['dateStr'],
-      isToday: json['isToday'],
-      isWeekend: json['isWeekend'],
-      isThisMonth: json['isThisMonth'],
-      isFuture: json['isFuture'],
-      attendance: json['attendance'] != null
+      date: _parseStringOrObject(json['date']),
+      day: json['day'] is int ? json['day'] : int.tryParse(json['day']?.toString() ?? ''),
+      dateStr: _parseStringOrObject(json['dateStr']),
+      isToday: json['isToday'] == true,
+      isWeekend: json['isWeekend'] == true,
+      isThisMonth: json['isThisMonth'] == true,
+      isFuture: json['isFuture'] == true,
+      attendance: json['attendance'] is Map<String, dynamic>
           ? CalendarAttendance.fromJson(json['attendance'])
           : null,
-      holiday: json['holiday'] != null
+      holiday: json['holiday'] is Map<String, dynamic>
           ? CalendarHoliday.fromJson(json['holiday'])
           : null,
-      leave: json['leave'] != null
+      leave: json['leave'] is Map<String, dynamic>
           ? CalendarLeave.fromJson(json['leave'])
           : null,
-      type: json['type'],
-      color: json['color'],
-      label: json['label']?.toString(),
-      icon: json['icon']?.toString(),
+      type: _parseStringOrObject(json['type']),
+      color: _parseStringOrObject(json['color']),
+      label: _parseStringOrObject(json['label']),
+      icon: _parseStringOrObject(json['icon']),
     );
   }
 
@@ -129,13 +136,13 @@ class CalendarAttendance {
 
   factory CalendarAttendance.fromJson(Map<String, dynamic> json) {
     return CalendarAttendance(
-      id: json['id'],
-      checkIn: json['check_in'],
-      checkOut: json['check_out'],
-      workingMinutes: json['working_minutes'],
-      status: json['status'],
+      id: json['id'] is int ? json['id'] : int.tryParse(json['id']?.toString() ?? ''),
+      checkIn: _parseStringOrObject(json['check_in']),
+      checkOut: _parseStringOrObject(json['check_out']),
+      workingMinutes: json['working_minutes'] is int ? json['working_minutes'] : int.tryParse(json['working_minutes']?.toString() ?? ''),
+      status: _parseStringOrObject(json['status']),
       isLate: json['is_late'] == 1 || json['is_late'] == true,
-      lateMinutes: json['late_minutes'],
+      lateMinutes: json['late_minutes'] is int ? json['late_minutes'] : int.tryParse(json['late_minutes']?.toString() ?? ''),
     );
   }
 
@@ -171,10 +178,10 @@ class CalendarHoliday {
 
   factory CalendarHoliday.fromJson(Map<String, dynamic> json) {
     return CalendarHoliday(
-      id: json['id'],
-      name: json['name'],
-      date: json['date'],
-      type: json['type'],
+      id: json['id'] is int ? json['id'] : int.tryParse(json['id']?.toString() ?? ''),
+      name: _parseStringOrObject(json['name']),
+      date: _parseStringOrObject(json['date']),
+      type: _parseStringOrObject(json['type']),
     );
   }
 }
@@ -188,9 +195,9 @@ class CalendarLeave {
 
   factory CalendarLeave.fromJson(Map<String, dynamic> json) {
     return CalendarLeave(
-      id: json['id'],
-      leaveType: json['leave_type'],
-      status: json['status'],
+      id: json['id'] is int ? json['id'] : int.tryParse(json['id']?.toString() ?? ''),
+      leaveType: _parseStringOrObject(json['leave_type']),
+      status: _parseStringOrObject(json['status']),
     );
   }
 }

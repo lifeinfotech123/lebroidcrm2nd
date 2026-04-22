@@ -1,22 +1,8 @@
 import 'package:flutter/material.dart';
-
-class TaskApprovalItem {
-  final String title;
-  final String initials;
-  final String assignee;
-  final String priority;
-  final String deadline;
-  final String remarks;
-
-  TaskApprovalItem({
-    required this.title,
-    required this.initials,
-    required this.assignee,
-    required this.priority,
-    required this.deadline,
-    required this.remarks,
-  });
-}
+// import '../../../../auth/data/services/auth_service.dart';
+import '../../../auth/data/services/auth_service.dart';
+import '../data/model/task_model.dart';
+import '../data/repository/task_repository.dart';
 
 class TaskApprovalsScreen extends StatefulWidget {
   const TaskApprovalsScreen({super.key});
@@ -26,24 +12,124 @@ class TaskApprovalsScreen extends StatefulWidget {
 }
 
 class _TaskApprovalsScreenState extends State<TaskApprovalsScreen> {
-  final List<TaskApprovalItem> _approvals = [
-    TaskApprovalItem(
-      title: 'System Maintenance & Security Audit',
-      initials: 'NE',
-      assignee: 'Neha Singh',
-      priority: 'High',
-      deadline: '24 Mar 2026',
-      remarks: '—',
-    ),
-    TaskApprovalItem(
-      title: 'Client Proposal for Medical Equipment',
-      initials: 'SU',
-      assignee: 'Suresh Nair',
-      priority: 'Medium',
-      deadline: '29 Mar 2026',
-      remarks: 'Proposal completed and sent to client via email. Awaiting client confirmation. Attached all documents to the internal drive block.',
-    ),
-  ];
+  final TaskRepository _taskRepository = TaskRepository(AuthService());
+  List<TaskModel> _tasks = [];
+  bool _isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchTasks();
+  }
+
+  Future<void> _fetchTasks() async {
+    setState(() => _isLoading = true);
+    try {
+      final allTasks = await _taskRepository.getAllTasks();
+      // Filter for tasks that are awaiting approval
+      // Adjust the condition based on your specific backend status naming
+      setState(() {
+        _tasks = allTasks.where((task) => 
+          task.status.toLowerCase() == 'completed_pending_approval' || 
+          task.status.toLowerCase() == 'completed'
+        ).toList();
+        _isLoading = false;
+      });
+    } catch (e) {
+      if (mounted) {
+        setState(() => _isLoading = false);
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Error fetching tasks: $e'), backgroundColor: Colors.red),
+        );
+      }
+    }
+  }
+
+  Future<void> _handleApprove(TaskModel task) async {
+    final TextEditingController remarksController = TextEditingController();
+    final result = await showDialog<String>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Approve Task'),
+        content: TextField(
+          controller: remarksController,
+          decoration: const InputDecoration(
+            labelText: 'Remarks',
+            hintText: 'Enter approval remarks (e.g. Good work)',
+          ),
+          maxLines: 3,
+        ),
+        actions: [
+          TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancel')),
+          ElevatedButton(
+            onPressed: () => Navigator.pop(context, remarksController.text),
+            style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
+            child: const Text('Approve'),
+          ),
+        ],
+      ),
+    );
+
+    if (result != null && mounted) {
+      _processAction(task, () => _taskRepository.approveTask(task.id, result));
+    }
+  }
+
+  Future<void> _handleReject(TaskModel task) async {
+    final TextEditingController reasonController = TextEditingController();
+    final result = await showDialog<String>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Reject Task'),
+        content: TextField(
+          controller: reasonController,
+          decoration: const InputDecoration(
+            labelText: 'Reason',
+            hintText: 'Enter rejection reason (e.g. Incomplete work)',
+          ),
+          maxLines: 3,
+        ),
+        actions: [
+          TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancel')),
+          ElevatedButton(
+            onPressed: () => Navigator.pop(context, reasonController.text),
+            style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
+            child: const Text('Reject'),
+          ),
+        ],
+      ),
+    );
+
+    if (result != null && mounted) {
+      _processAction(task, () => _taskRepository.rejectTask(task.id, result));
+    }
+  }
+
+  Future<void> _processAction(TaskModel task, Future<void> Function() action) async {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) => const Center(child: CircularProgressIndicator()),
+    );
+
+    try {
+      await action();
+      if (mounted) {
+        Navigator.pop(context); // Close loading indicator
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Action processed successfully'), backgroundColor: Colors.green),
+        );
+        _fetchTasks();
+      }
+    } catch (e) {
+      if (mounted) {
+        Navigator.pop(context); // Close loading indicator
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Error: $e'), backgroundColor: Colors.red),
+        );
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +145,11 @@ class _TaskApprovalsScreenState extends State<TaskApprovalsScreen> {
           IconButton(icon: const Icon(Icons.search), onPressed: () {}),
         ],
       ),
-      body: CustomScrollView(
+      body: _isLoading 
+        ? const Center(child: CircularProgressIndicator())
+        : _tasks.isEmpty 
+          ? const Center(child: Text('No pending task approvals found'))
+          : CustomScrollView(
         slivers: [
           SliverToBoxAdapter(
             child: Padding(
@@ -73,7 +163,7 @@ class _TaskApprovalsScreenState extends State<TaskApprovalsScreen> {
                       style: TextStyle(color: Colors.grey.shade600, fontSize: 14),
                       children: [
                         TextSpan(
-                          text: '${_approvals.length} Tasks',
+                          text: '${_tasks.length} Tasks',
                           style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.black87),
                         ),
                       ],
@@ -100,9 +190,9 @@ class _TaskApprovalsScreenState extends State<TaskApprovalsScreen> {
             sliver: SliverList(
               delegate: SliverChildBuilderDelegate(
                 (context, index) {
-                  return _buildApprovalCard(_approvals[index]);
+                  return _buildApprovalCard(_tasks[index]);
                 },
-                childCount: _approvals.length,
+                childCount: _tasks.length,
               ),
             ),
           ),
@@ -111,8 +201,8 @@ class _TaskApprovalsScreenState extends State<TaskApprovalsScreen> {
     );
   }
 
-  Widget _buildApprovalCard(TaskApprovalItem item) {
-    Color priorityColor = item.priority == 'High' ? Colors.red : (item.priority == 'Medium' ? Colors.orange : Colors.green);
+  Widget _buildApprovalCard(TaskModel item) {
+    Color priorityColor = item.priority.toLowerCase() == 'high' ? Colors.red : (item.priority.toLowerCase() == 'medium' ? Colors.orange : Colors.green);
 
     return Container(
       margin: const EdgeInsets.only(bottom: 16),
@@ -201,7 +291,7 @@ class _TaskApprovalsScreenState extends State<TaskApprovalsScreen> {
                     children: [
                       Text('Completion Remarks', style: TextStyle(color: Colors.grey.shade500, fontSize: 10, fontWeight: FontWeight.bold)),
                       const SizedBox(height: 6),
-                      Text(item.remarks, style: TextStyle(color: Colors.black87, fontSize: 13, height: 1.4)),
+                      Text(item.completionRemarks ?? '—', style: const TextStyle(color: Colors.black87, fontSize: 13, height: 1.4)),
                     ],
                   ),
                 ),
@@ -215,7 +305,7 @@ class _TaskApprovalsScreenState extends State<TaskApprovalsScreen> {
               children: [
                 Expanded(
                   child: OutlinedButton.icon(
-                    onPressed: () {},
+                    onPressed: () => _handleReject(item),
                     icon: Icon(Icons.close, size: 16, color: Colors.red.shade600),
                     label: const Text('Reject', style: TextStyle(fontWeight: FontWeight.bold)),
                     style: OutlinedButton.styleFrom(
@@ -229,7 +319,7 @@ class _TaskApprovalsScreenState extends State<TaskApprovalsScreen> {
                 const SizedBox(width: 12),
                 Expanded(
                   child: ElevatedButton.icon(
-                    onPressed: () {},
+                    onPressed: () => _handleApprove(item),
                     icon: const Icon(Icons.check, size: 16),
                     label: const Text('Approve', style: TextStyle(fontWeight: FontWeight.bold)),
                     style: ElevatedButton.styleFrom(

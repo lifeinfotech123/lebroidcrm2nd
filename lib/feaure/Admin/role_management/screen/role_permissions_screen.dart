@@ -1,26 +1,8 @@
 import 'package:flutter/material.dart';
-
-class UserData {
-  final String avatarInitial;
-  final String name;
-  final String email;
-  final String empCode;
-  final String department;
-  final String designation;
-  final String role;
-  final String status;
-
-  UserData({
-    required this.avatarInitial,
-    required this.name,
-    required this.email,
-    required this.empCode,
-    required this.department,
-    required this.designation,
-    required this.role,
-    required this.status,
-  });
-}
+import 'package:lebroid_crm/feaure/Admin/role_management/data/repository/role_repository.dart';
+import 'package:lebroid_crm/feaure/Admin/role_management/data/model/role_model.dart';
+import 'package:lebroid_crm/feaure/Admin/employees_management/data/repository/employee_repository.dart';
+import 'package:lebroid_crm/feaure/Admin/employees_management/data/model/employee_model.dart';
 
 class RolePermissionsScreen extends StatefulWidget {
   const RolePermissionsScreen({super.key});
@@ -30,22 +12,42 @@ class RolePermissionsScreen extends StatefulWidget {
 }
 
 class _RolePermissionsScreenState extends State<RolePermissionsScreen> {
+  final RoleRepository _roleRepository = RoleRepository();
+  final EmployeeRepository _employeeRepository = EmployeeRepository();
+  
   String _selectedRole = 'All Roles';
   String _selectedDepartment = 'All Departments';
   String _selectedStatus = 'All Status';
 
-  final List<UserData> _users = [
-    UserData(avatarInitial: 'A', name: 'Amit Kumar', email: 'employee@gmail.com', empCode: 'LEB-005', department: 'Information Technology', designation: 'Software Developer', role: 'employee', status: 'active'),
-    UserData(avatarInitial: 'K', name: 'Kavita Patel', email: 'kavita@gmail.com', empCode: 'LEB-006', department: 'Sales & Marketing', designation: 'Sales Executive', role: 'employee', status: 'active'),
-    UserData(avatarInitial: 'N', name: 'Neha Singh', email: 'neha@gmail.com', empCode: 'LEB-008', department: 'Medical Affairs', designation: 'Medical Representative', role: 'employee', status: 'active'),
-    UserData(avatarInitial: 'P', name: 'Pooja Verma', email: 'pooja@gmail.com', empCode: 'LEB-010', department: 'Information Technology', designation: 'QA Engineer', role: 'employee', status: 'active'),
-    UserData(avatarInitial: 'P', name: 'Priya Sharma', email: 'hr@gmail.com', empCode: 'LEB-002', department: 'Human Resources', designation: 'HR Manager', role: 'manager', status: 'active'),
-    UserData(avatarInitial: 'R', name: 'Rahul Mehta', email: 'it.head@gmail.com', empCode: 'LEB-003', department: 'Information Technology', designation: 'IT Head', role: 'manager', status: 'active'),
-    UserData(avatarInitial: 'R', name: 'Ravi Gupta', email: 'ravi@gmail.com', empCode: 'LEB-007', department: 'Operations', designation: 'Operations Executive', role: 'employee', status: 'active'),
-    UserData(avatarInitial: 'S', name: 'Sunita Rao', email: 'accounts@gmail.com', empCode: 'LEB-004', department: 'Accounts & Finance', designation: 'Accounts Manager', role: 'manager', status: 'active'),
-    UserData(avatarInitial: 'S', name: 'Suresh Nair', email: 'suresh@gmail.com', empCode: 'LEB-009', department: 'Accounts & Finance', designation: 'Accountant', role: 'employee', status: 'active'),
-    UserData(avatarInitial: 'S', name: 'System Administrator', email: 'admin@gmail.com', empCode: 'LEB-001', department: 'Human Resources', designation: 'System Administrator', role: 'admin', status: 'active'),
-  ];
+  List<EmployeeModel> _employees = [];
+  bool _isLoading = true;
+  int _currentPage = 1;
+  int _lastPage = 1;
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchEmployees();
+  }
+
+  Future<void> _fetchEmployees() async {
+    setState(() => _isLoading = true);
+    try {
+      final response = await _employeeRepository.getAllEmployees(page: _currentPage);
+      setState(() {
+        _employees = response['employees'] as List<EmployeeModel>;
+        _lastPage = response['lastPage'] as int;
+        _isLoading = false;
+      });
+    } catch (e) {
+      setState(() => _isLoading = false);
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Failed to load employees: $e'), backgroundColor: Colors.red),
+        );
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +81,7 @@ class _RolePermissionsScreenState extends State<RolePermissionsScreen> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 4.0, vertical: 8.0),
                     child: Text(
-                      '${_users.length} user(s)',
+                      '${_employees.length} user(s)',
                       style: TextStyle(fontWeight: FontWeight.w700, fontSize: 15, color: Colors.grey[800]),
                     ),
                   ),
@@ -87,17 +89,26 @@ class _RolePermissionsScreenState extends State<RolePermissionsScreen> {
               ),
             ),
           ),
-          SliverPadding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0).copyWith(bottom: 24.0),
-            sliver: SliverList(
-              delegate: SliverChildBuilderDelegate(
-                (context, index) {
-                  return _buildEmployeeCard(_users[index]);
-                },
-                childCount: _users.length,
+          if (_isLoading)
+            const SliverFillRemaining(
+              child: Center(child: CircularProgressIndicator()),
+            )
+          else if (_employees.isEmpty)
+            const SliverFillRemaining(
+              child: Center(child: Text('No employees found')),
+            )
+          else
+            SliverPadding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0).copyWith(bottom: 24.0),
+              sliver: SliverList(
+                delegate: SliverChildBuilderDelegate(
+                  (context, index) {
+                    return _buildEmployeeCard(_employees[index]);
+                  },
+                  childCount: _employees.length,
+                ),
               ),
             ),
-          ),
         ],
       ),
     );
@@ -261,7 +272,7 @@ class _RolePermissionsScreenState extends State<RolePermissionsScreen> {
     );
   }
 
-  Widget _buildEmployeeCard(UserData user) {
+  Widget _buildEmployeeCard(EmployeeModel user) {
     return Container(
       margin: const EdgeInsets.only(bottom: 16),
       decoration: BoxDecoration(
@@ -288,7 +299,7 @@ class _RolePermissionsScreenState extends State<RolePermissionsScreen> {
                   backgroundColor: Colors.indigo.shade50,
                   foregroundColor: Colors.indigo,
                   child: Text(
-                    user.avatarInitial,
+                    user.initials,
                     style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                   ),
                 ),
@@ -298,12 +309,12 @@ class _RolePermissionsScreenState extends State<RolePermissionsScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        user.name,
+                        user.name ?? 'Unknown',
                         style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.black87),
                       ),
                       const SizedBox(height: 3),
                       Text(
-                        user.email,
+                        user.email ?? 'N/A',
                         style: TextStyle(color: Colors.grey[600], fontSize: 13),
                         overflow: TextOverflow.ellipsis,
                       ),
@@ -320,12 +331,12 @@ class _RolePermissionsScreenState extends State<RolePermissionsScreen> {
                         borderRadius: BorderRadius.circular(6),
                       ),
                       child: Text(
-                        user.empCode,
+                        user.employeeId ?? 'N/A',
                         style: TextStyle(color: Colors.grey.shade800, fontWeight: FontWeight.w600, fontSize: 11),
                       ),
                     ),
                     const SizedBox(height: 6),
-                    _buildStatusBadge(user.status),
+                    _buildStatusBadge(user.status ?? 'active'),
                   ],
                 ),
               ],
@@ -342,7 +353,7 @@ class _RolePermissionsScreenState extends State<RolePermissionsScreen> {
                     children: [
                       Text('Department', style: TextStyle(color: Colors.grey[500], fontSize: 11)),
                       const SizedBox(height: 4),
-                      Text(user.department, style: const TextStyle(fontWeight: FontWeight.w500, fontSize: 13, color: Colors.black87)),
+                      Text(user.department?['name'] ?? 'N/A', style: const TextStyle(fontWeight: FontWeight.w500, fontSize: 13, color: Colors.black87)),
                     ],
                   ),
                 ),
@@ -352,7 +363,7 @@ class _RolePermissionsScreenState extends State<RolePermissionsScreen> {
                     children: [
                       Text('Designation', style: TextStyle(color: Colors.grey[500], fontSize: 11)),
                       const SizedBox(height: 4),
-                      Text(user.designation, style: const TextStyle(fontWeight: FontWeight.w500, fontSize: 13, color: Colors.black87)),
+                      Text(user.designation ?? 'N/A', style: const TextStyle(fontWeight: FontWeight.w500, fontSize: 13, color: Colors.black87)),
                     ],
                   ),
                 ),
@@ -372,17 +383,13 @@ class _RolePermissionsScreenState extends State<RolePermissionsScreen> {
                   Row(
                     children: [
                       Text('Role: ', style: TextStyle(color: Colors.grey[600], fontSize: 13)),
-                      _buildRoleBadge(user.role),
+                      _buildRoleBadge(user.roles?.isNotEmpty == true ? user.roles![0]['name'] ?? 'N/A' : 'N/A'),
                     ],
                   ),
                   SizedBox(
                     height: 32,
                     child: ElevatedButton.icon(
-                      onPressed: () {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text('Assigning role to ${user.name}')),
-                        );
-                      },
+                      onPressed: () => _showAssignRoleDialog(user),
                       icon: const Icon(Icons.shield_outlined, size: 16),
                       label: const Text('Assign', style: TextStyle(fontSize: 13, fontWeight: FontWeight.w600)),
                       style: ElevatedButton.styleFrom(
@@ -456,5 +463,103 @@ class _RolePermissionsScreenState extends State<RolePermissionsScreen> {
         ),
       ),
     );
+  }
+
+  void _showAssignRoleDialog(EmployeeModel user) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return FutureBuilder<List<RoleModel>>(
+          future: _roleRepository.getAllRoles(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const AlertDialog(
+                content: SizedBox(
+                  height: 100,
+                  child: Center(child: CircularProgressIndicator()),
+                ),
+              );
+            }
+            if (snapshot.hasError) {
+              return AlertDialog(
+                title: const Text('Error'),
+                content: Text('Failed to fetch roles: ${snapshot.error}'),
+                actions: [
+                  TextButton(
+                    onPressed: () => Navigator.pop(context),
+                    child: const Text('Close'),
+                  ),
+                ],
+              );
+            }
+
+            final roles = snapshot.data ?? [];
+            if (roles.isEmpty) {
+              return AlertDialog(
+                title: const Text('No Roles Found'),
+                content: const Text('There are no roles available to assign.'),
+                actions: [
+                  TextButton(
+                    onPressed: () => Navigator.pop(context),
+                    child: const Text('Close'),
+                  ),
+                ],
+              );
+            }
+
+            return AlertDialog(
+              title: Text('Assign Role to ${user.name}', style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+              content: SizedBox(
+                width: double.maxFinite,
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: roles.length,
+                  itemBuilder: (context, index) {
+                    final role = roles[index];
+                    return ListTile(
+                      leading: const Icon(Icons.shield_outlined, color: Colors.indigo),
+                      title: Text(role.name ?? 'Unknown Role'),
+                      onTap: () {
+                        Navigator.pop(context);
+                        _assignRole(user.id, role.name ?? '');
+                      },
+                    );
+                  },
+                ),
+              ),
+            );
+          },
+        );
+      },
+    );
+  }
+
+  Future<void> _assignRole(int userId, String roleName) async {
+    try {
+      showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) => const Center(child: CircularProgressIndicator()),
+      );
+
+      await _roleRepository.assignRoleToUser(userId, roleName);
+      
+      Navigator.pop(context); // Close loading indicator
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Role "$roleName" assigned successfully!'),
+          backgroundColor: Colors.green,
+        ),
+      );
+    } catch (e) {
+      Navigator.pop(context); // Close loading indicator
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Error: ${e.toString()}'),
+          backgroundColor: Colors.red,
+        ),
+      );
+    }
   }
 }

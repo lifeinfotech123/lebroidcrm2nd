@@ -62,4 +62,14 @@ class RoleRepository {
       throw Exception('Failed to fetch permissions');
     }
   }
+
+  Future<void> assignRoleToUser(int userId, String roleName) async {
+    final response = await _authService.postWithToken('roles/assign-to-user', {
+      'user_id': userId,
+      'role': roleName,
+    });
+    if (response['success'] != true) {
+      throw Exception(response['message'] ?? 'Failed to assign role');
+    }
+  }
 }

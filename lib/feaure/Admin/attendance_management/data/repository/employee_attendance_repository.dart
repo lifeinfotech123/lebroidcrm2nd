@@ -121,8 +121,18 @@ class EmployeeAttendanceRepository {
     try {
       final response = await _authService.get('attendances/corrections');
       if (response['success'] == true) {
-        final List<dynamic> data = response['data'] ?? [];
-        return data.map((json) => AttendanceModel.fromJson(json)).toList();
+        final rawData = response['data'];
+        List<dynamic> dataList;
+
+        if (rawData is Map && rawData.containsKey('data')) {
+          dataList = rawData['data'] as List<dynamic>;
+        } else if (rawData is List) {
+          dataList = rawData;
+        } else {
+          dataList = [];
+        }
+
+        return dataList.map((json) => AttendanceModel.fromJson(json)).toList();
       }
       return [];
     } catch (e) {

@@ -61,16 +61,25 @@ android {
     }
 
     buildTypes {
+//        getByName("release") {
+//            if (keystoreProperties.isNotEmpty() && keystoreProperties.containsKey("storeFile")) {
+//                signingConfig = signingConfigs.getByName("release")
+//            }
+//            isMinifyEnabled = true
+//            isShrinkResources = true
+//            proguardFiles(
+//                getDefaultProguardFile("proguard-android-optimize.txt"),
+//                "proguard-rules.pro"
+//            )
+//        }
         getByName("release") {
             if (keystoreProperties.isNotEmpty() && keystoreProperties.containsKey("storeFile")) {
                 signingConfig = signingConfigs.getByName("release")
             }
-            isMinifyEnabled = true
-            isShrinkResources = true
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
+
+            // 🔥 CHANGE THIS
+            isMinifyEnabled = false
+            isShrinkResources = false
         }
 
         getByName("debug") {
